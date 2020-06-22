@@ -1,0 +1,203 @@
+<div class="container mainhub" ng-style="{'background-color': color}"  data-toggle="modal" data-target="#exampleModal">
+
+    <div class="row row-cols-17" style="margin-left: -0.8rem">
+
+        <div class="col" style="padding-top:2rem; margin-left: -1.2rem;max-height: 35px">
+            <div class="col-1">
+                <div ng-if="!ir.dcHeadlightFlash">
+                    <svg class="bi bi-lightning-fill flashing" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                    </svg>
+                </div>
+
+                <img ng-if="ir.FuelLevel < 10 && ir.FuelLevel >= 5" src="Images/gas-station.png" style="filter: invert(93%) sepia(98%) saturate(1096%) hue-rotate(325deg) brightness(113%) contrast(92%);">
+                <img ng-if="ir.FuelLevel < 5 && ir.FuelLevel >= 1" src="Images/gas-station.png" style="filter: invert(41%) sepia(95%) saturate(570%) hue-rotate(326deg) brightness(99%) contrast(95%);">
+                <img ng-if="ir.FuelLevel < 1" src="Images/gas-station.png" class="fuelFlashing" style="filter: invert(41%) sepia(95%) saturate(570%) hue-rotate(326deg) brightness(99%) contrast(95%);">
+            </div>
+        </div>
+
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.1}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.2}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.3}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.4}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.5}" ></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledGreen: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.6}" ></span>
+        </div>
+
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledYellow: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.65}" ></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledYellow: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.70}" ></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledYellow: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.75}" ></span>
+        </div>
+
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledRed: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.80}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledRed: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.85}"></span>
+        </div>
+        <div class="col">
+            <span class="dot" ng-class="{blinking : ir.dcPitSpeedLimiterToggle == true, revledRed: ir.dcPitSpeedLimiterToggle == true || ir.ShiftIndicatorPct > 0.9}"></span>
+        </div>
+
+        <div class="col"></div>
+
+    </div>
+
+    <div class="row row-cols-3">
+
+        <div class="col-4">
+
+            <div style="margin-left: 3.6rem">
+                <div class="row">
+                    <span class="kph">KPH</span>
+                </div>
+
+                <div class="row">
+                    <span class="speed" ng-bind="ir.Speed * 3.6 | number:0 "></span>
+                </div>
+
+                <div class="row">
+                    <span class="rpmText" >RPM</span>
+                </div>
+
+                <div class="row">
+                    <span class="rpm" ng-bind="ir.RPM | limitTo:4"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-4" >
+            <div class="row">
+                <div class="col, gear" ng-if="ir.Gear == -1">R</div>
+                <div class="col, gear" ng-if="ir.Gear == 0">N</div>
+                <div class="col, gear" ng-bind="ir.Gear" ng-if="ir.Gear > 0"></div>
+            </div>
+            <div class="row">
+                <span class="timeleft"ng-bind="ir.SessionTimeRemain | secondsToDateTime "></span>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div style="margin-left: -3rem">
+                <div class="row">
+                    <span class="position" ng-if="ir.PlayerCarClassPosition > 0" ng-bind=" 'P' + ir.PlayerCarClassPosition" ></span>
+                    <span class="position" ng-if="ir.PlayerCarClassPosition == 0" >P-</span>
+                </div>
+
+                <div class="row" ng-show="delta == 'optimal'">
+
+                    <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+
+
+                </div>
+
+                <div class="row" ng-show="delta == 'best'">
+
+                    <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionBestLap < 0" ng-bind="ir.LapDeltaToSessionBestLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionBestLap > 0" ng-bind="ir.LapDeltaToSessionBestLap | number:2 | plusOrMinus"></span>
+
+                </div>
+
+                <div class="row" ng-show="delta == 'last'">
+
+                    <span class="delta" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap < 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap > 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
+
+                </div>
+
+                <div class="row" ng-show="Lap == 'optimal'">
+                    <span class="lastLap" ng-if="ir.LapOptimalLapTime == 0 "></span>
+                    <span ng-if="ir.LapOptimalLapTime > 60" class="lastLap" ng-if="ir.LapOptimalLapTime > 0 "ng-bind="ir.LapOptimalLapTime | toMinSec"></span>
+                </div>
+
+                <div class="row" ng-show="Lap == 'best'">
+                    <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
+                    <span ng-if="ir.LapBestLapTime > 60" class="lastLap" ng-if="ir.LapBestLapTime > 0 "ng-bind="ir.LapBestLapTime | toMinSec"></span>
+                </div>
+
+                <div class="row" ng-show="Lap == 'last'">
+                    <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
+                    <span ng-if="ir.LapLastLapTime > 60" class="lastLap" ng-if="ir.LapLastLapTime > 0 "ng-bind="ir.LapLastLapTime | toMinSec"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-4 bottomHub">
+        <div class="col">
+            <div class="row bb">
+                <span class="bottomHubText">BB</span>
+            </div>
+
+            <div class="row bb" >
+                <span class="bottomHubText" ng-bind="ir.dcBrakeBias | number:1 | percentage"></span>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="row bb">
+                <span class="bottomHubText">ABS</span>
+            </div>
+
+            <div class="row bb" >
+                <span class="bottomHubText" ng-bind="ir.dcABS"></span>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="row bb">
+                <span class="bottomHubText">TC4</span>
+            </div>
+
+            <div class="row bb" >
+                <span class="bottomHubText" ng-bind="ir.dcTractionControl"></span>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="row bb">
+                <span class="bottomHubText">INC</span>
+            </div>
+
+            <div class="row bb" ng-if="ir.ir.WeekendInfo.WeekendOptions.IncidentLimit == unlimited">
+                <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount"></span>
+            </div>
+
+            <div class="row bb" ng-if="ir.ir.WeekendInfo.WeekendOptions.IncidentLimit != unlimited">
+                <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount + '/' + ir.WeekendInfo.WeekendOptions.IncidentLimit"></span>
+            </div>
+        </div>
+    </div>
+
+</div>

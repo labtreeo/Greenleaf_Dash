@@ -1,0 +1,207 @@
+@font-face {
+    font-family: Digitalism;
+    src: url(../fonts/digitalism.ttf);
+}
+
+@font-face {
+    font-family: Roboto Black;
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+.mainhub{
+    border-radius: 20px;
+    background-color:rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+}
+
+.transparency{
+    background-color:rgba(0, 0, 0, 1);
+}
+
+.gear{
+    font-size: 110px;
+    font-family: Digitalism, sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -1.9rem;
+    max-height: 10.1rem;
+}
+.speed{
+    font-size: 27px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Roboto Black, sans-serif;
+    margin-top: -0.3rem;
+}
+
+.timeleft{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+    font-family: Roboto Black, sans-serif;
+    margin-top: -2.7rem;
+}
+
+.kph{
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -0.2rem;
+}
+
+.rpmText{
+    font-size: 15px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -.2rem;
+}
+
+.rpm{
+    font-size: 27px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Roboto Black, sans-serif;
+    margin-top: -0.2rem;
+}
+
+.position{
+    font-size: 30px;
+    font-family: Roboto Black, sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: -0.6rem;
+}
+
+.delta{
+    font-size: 28px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Roboto Black, sans-serif;
+    margin-top: -.20rem;
+}
+
+.bb{
+    margin: 0 auto;
+    text-align: center;
+    font-family: Roboto Black, sans-serif;
+}
+
+.deltaGreen{
+    color: #2bdb08;
+}
+.deltaRed{
+    color: #d70720;
+}
+
+.lastLap{
+    font-size: 23px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Roboto Black, sans-serif;
+
+}
+
+.bottomHub{
+    margin-top: -1rem;
+    padding-bottom: 0.1rem;
+    border-style: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+}
+
+.bottomHubText{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 0.3rem;
+}
+
+.revledGreen{
+    background-color: #2bdb08;
+}
+
+.revledYellow{
+    background-color: yellow;
+}
+
+.revledRed{
+    background-color: red;
+}
+
+.batteryState{
+    margin: 0 auto;
+    text-align: right;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 25px;
+    font-family: Roboto Black, sans-serif;
+}
+
+.deployState{
+    margin: 0 auto;
+    text-align: right;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    font-size: 25px;
+    font-family: Roboto Black, sans-serif;
+    color: #ffffff;
+}
+
+.wrapBat{
+    padding-left: 8px;
+    padding-right: 3px;
+}
+
+.wrapDep{
+    padding-left: 3px;
+    padding-right: 8px;
+}
+
+.percWrap{
+    padding: 4px;
+}
+
+.charging{
+    border-color: green;
+}
+
+.discharging{
+    border-color: red;
+}
+
+
+
+
+
+
+.blinking {
+    animation: .6s blink ease infinite;
+}
+
+.flashing {
+    animation: .5s blink ease infinite;
+    animation-iteration-count: 4;
+}
+
+.fuelFlashing {
+    animation: 1s blink ease infinite;
+}
+
+@-webkit-keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
