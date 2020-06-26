@@ -10,13 +10,9 @@
 
 .mainhub{
     border-radius: 20px;
-    background-color:rgba(0, 0, 0, 0.2);
+    background-color:rgba(0, 0, 0, 0.0);
     border-style: solid;
     border-width: 1px;
-}
-
-.transparency{
-    background-color:rgba(0, 0, 0, 1);
 }
 
 .gear{
@@ -168,7 +164,7 @@
 }
 
 .percWrap{
-    padding: 4px;
+    padding: 5px;
 }
 
 .charging{
@@ -178,11 +174,6 @@
 .discharging{
     border-color: red;
 }
-
-
-
-
-
 
 .blinking {
     animation: .6s blink ease infinite;

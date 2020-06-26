@@ -1,11 +1,11 @@
-<div class="container mainhub" ng-style="{'background-color': color}" >
+<div class="container mainhub">
 
     <div class="row row-cols-2" style="padding-top: 0.4rem;">
 
         <div class="col col-6 wrapBat">
             <div class="batteryState" ng-class="{charging: ir.PowerMGU_K < 0, discharging: ir.PowerMGU_K > 0}">
                 <div class="percWrap">
-                    <div ng-style="{ 'width': ir.EnergyERSBatteryPct * 89 + '%'}"  style="position: absolute; background-color:rgb(34,152,43); border-radius: 5px; color: transparent">-</div>
+                    <div ng-style="{ 'width': ir.EnergyERSBatteryPct * 88 + '%'}"  style="position: absolute; background-color:rgb(34,152,43); border-radius: 5px; color: transparent">-</div>
 
                     <svg class="bi bi-lightning-fill" style="position: relative; z-index: 10; float:left; margin-top: 0.35rem" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
@@ -21,7 +21,7 @@
             <div class="deployState">
                 <div class="percWrap">
 
-                    <div ng-style="{ 'width': ir.EnergyMGU_KLapDeployPct * 89 + '%'}" style="position: absolute; background-color:rgb(71,82,255); border-radius: 5px; color: transparent">-</div>
+                    <div ng-style="{ 'width': ir.EnergyMGU_KLapDeployPct * 88 + '%'}" style="position: absolute; background-color:rgb(71,82,255); border-radius: 5px; color: transparent">-</div>
 
                     <svg class="bi bi-caret-right-fill" style="position: relative; z-index: 10; float:left; margin-top: 0.35rem" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
@@ -160,23 +160,14 @@
         </div>
 
         <div class="col-4">
-            <div style="margin-left: -3rem">
+            <div style="margin-left: -2rem">
+
                 <div class="row">
                     <span class="position" ng-if="ir.PlayerCarClassPosition > 0" ng-bind=" 'P' + ir.PlayerCarClassPosition" ></span>
                     <span class="position" ng-if="ir.PlayerCarClassPosition == 0" >P-</span>
                 </div>
 
-                <div class="row" ng-show="delta == 'optimal'">
-
-                    <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
-
-                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
-                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
-
-
-                </div>
-
-                <div class="row" ng-show="delta == 'best'">
+                <div class="row">
 
                     <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
 
@@ -188,31 +179,9 @@
 
                 </div>
 
-                <div class="row" ng-show="delta == 'last'">
-
-                    <span class="delta" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
-
-                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
-                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
-
-                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap < 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
-                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap > 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
-
-                </div>
-
-                <div class="row" ng-show="Lap == 'optimal'">
-                    <span class="lastLap" ng-if="ir.LapOptimalLapTime == 0 "></span>
-                    <span ng-if="ir.LapOptimalLapTime > 60" class="lastLap" ng-if="ir.LapOptimalLapTime > 0 "ng-bind="ir.LapOptimalLapTime | toMinSec"></span>
-                </div>
-
-                <div class="row" ng-show="Lap == 'best'">
+                <div class="row">
                     <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
                     <span ng-if="ir.LapBestLapTime > 60" class="lastLap" ng-if="ir.LapBestLapTime > 0 "ng-bind="ir.LapBestLapTime | toMinSec"></span>
-                </div>
-
-                <div class="row" ng-show="Lap == 'last'">
-                    <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
-                    <span ng-if="ir.LapLastLapTime > 60" class="lastLap" ng-if="ir.LapLastLapTime > 0 "ng-bind="ir.LapLastLapTime | toMinSec"></span>
                 </div>
 
             </div>
