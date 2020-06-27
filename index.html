@@ -27,11 +27,10 @@
 	<div class="container" ng-if="!ir.IsOnTrack"></div>
 
 	<div ng-if="ir.IsOnTrack" data-toggle="modal" data-target="#exampleModal">
-		<div ng-if="ir.PlayerCarIdx == 32" ng-include="'html/AudiR18.html'"></div>
+		<div ng-if="ir.PlayerCarIdx == 32 || ir.PlayerCarIdx == 0" ng-include="'html/AudiR18.html'"></div>
 		<div ng-if="ir.PlayerCarIdx === '33'" ng-include="'html/Porsche919.html'"></div>
-		<div ng-if="ir.PlayerCarIdx != 32" && ir.PlayerCarIdx != 33" ng-include="'html/Genericdash.html'"></div>
+		<div ng-if="ir.PlayerCarIdx != 32 && ir.PlayerCarIdx != 33 && ir.PlayerCarIdx != 0" ng-include="'html/Genericdash.html'"></div>
 	</div>
-
 
 </body>
 

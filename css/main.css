@@ -10,7 +10,7 @@
 
 .mainhub{
     border-radius: 20px;
-    background-color:rgba(0, 0, 0, 0.0);
+    background-color:rgba(0, 0, 0, 0.4);
     border-style: solid;
     border-width: 1px;
 }
@@ -153,6 +153,15 @@
     color: #ffffff;
 }
 
+.rechargeState{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2px;
+    font-family: Roboto Black, sans-serif;
+    color: #ffffff;
+    padding-left: 25px;
+}
+
 .wrapBat{
     padding-left: 8px;
     padding-right: 3px;
@@ -168,7 +177,7 @@
 }
 
 .charging{
-    border-color: green;
+    border-color: rgb(34,152,43);
 }
 
 .discharging{
