@@ -26,7 +26,39 @@
 
 	<div class="container" ng-if="!ir.IsOnTrack"></div>
 
-	<div ng-if="ir.IsOnTrack" data-toggle="modal" data-target="#exampleModal">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					<span style="color: black" >Background opacity</span>
+
+					<select ng-model="color" ng-options="option.value as option.name for option in opacity" ng-change="ColorChange(color)">
+					</select>
+
+					<br>
+
+					<span style="color: black" >Laptime shown</span>
+
+					<select ng-model="Lap" ng-options="option.value as option.name for option in Laptime" ng-change="LaptimeChange(Lap)">
+					</select>
+
+					<br>
+
+					<span style="color: black" >Delta shown</span>
+
+					<select ng-model="delta" ng-options="option.value as option.name for option in Deltatime" ng-change="DeltatimeChange(delta)">
+					</select>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="ir.IsOnTrack">
 		<div ng-if="ir.PlayerCarIdx == 32 || ir.PlayerCarIdx == 0" ng-include="'html/AudiR18.html'"></div>
 		<div ng-if="ir.PlayerCarIdx === '33'" ng-include="'html/Porsche919.html'"></div>
 		<div ng-if="ir.PlayerCarIdx != 32 && ir.PlayerCarIdx != 33 && ir.PlayerCarIdx != 0" ng-include="'html/Genericdash.html'"></div>

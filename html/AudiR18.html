@@ -4,7 +4,7 @@
 
 </div>
 
-<div class="container mainhub">
+<div class="container mainhub" ng-style="{'background-color': color}"  data-toggle="modal" data-target="#exampleModal">
 
     <div class="row row-cols-2" style="padding-top: 0.4rem;">
 
@@ -173,7 +173,17 @@
                     <span class="position" ng-if="ir.PlayerCarClassPosition == 0" >P-</span>
                 </div>
 
-                <div class="row">
+                <div class="row" ng-show="delta == 'optimal'">
+
+                    <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+
+
+                </div>
+
+                <div class="row" ng-show="delta == 'best'">
 
                     <span class="delta" ng-if="ir.LapDeltaToSessionBestLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
 
@@ -185,9 +195,31 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" ng-show="delta == 'last'">
+
+                    <span class="delta" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap == 0">--,--</span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap < 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap == 0 && ir.LapDeltaToSessionOptimalLap > 0" ng-bind="ir.LapDeltaToSessionOptimalLap | number:2 | plusOrMinus"></span>
+
+                    <span class="delta deltaGreen" ng-if="ir.LapDeltaToSessionLastlLap < 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
+                    <span class="delta deltaRed" ng-if="ir.LapDeltaToSessionLastlLap > 0" ng-bind="ir.LapDeltaToSessionLastlLap | number:2 | plusOrMinus"></span>
+
+                </div>
+
+                <div class="row" ng-show="Lap == 'optimal'">
+                    <span class="lastLap" ng-if="ir.LapOptimalLapTime == 0 "></span>
+                    <span ng-if="ir.LapOptimalLapTime > 60" class="lastLap" ng-if="ir.LapOptimalLapTime > 0 "ng-bind="ir.LapOptimalLapTime | toMinSec"></span>
+                </div>
+
+                <div class="row" ng-show="Lap == 'best'">
                     <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
                     <span ng-if="ir.LapBestLapTime > 60" class="lastLap" ng-if="ir.LapBestLapTime > 0 "ng-bind="ir.LapBestLapTime | toMinSec"></span>
+                </div>
+
+                <div class="row" ng-show="Lap == 'last'">
+                    <span class="lastLap" ng-if="ir.LapLastLapTime == 0 "></span>
+                    <span ng-if="ir.LapLastLapTime > 60" class="lastLap" ng-if="ir.LapLastLapTime > 0 "ng-bind="ir.LapLastLapTime | toMinSec"></span>
                 </div>
 
             </div>

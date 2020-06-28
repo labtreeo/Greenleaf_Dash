@@ -89,7 +89,7 @@
     //             },
     //             EnergyERSBatteryPct: .874,
     //             EnergyMGU_KLapDeployPct: .124,
-    //             PowerMGU_K: 1,
+    //             PowerMGU_K: 0,
     //             FuelLevel: 5,
     //             LapLastLapTime: 203.455,
     //             LapBestLapTime: 201.543,
@@ -105,6 +105,114 @@
     // });
 
     app.controller('MainCtrl', function($scope, iRService, $http) {
+
+        if (localStorage.getItem('color') == null){
+
+            $http.get('js/settings.json').then(function(response) {
+                $scope.settings = JSON.parse(JSON.stringify(response.data));
+
+                $scope.color = $scope.settings.data.color;
+
+            });
+
+        }else{
+            $scope.color = localStorage.getItem('color');
+        }
+
+        if (localStorage.getItem('Lap') == null){
+
+            $http.get('js/settings.json').then(function(response) {
+                $scope.settings = JSON.parse(JSON.stringify(response.data));
+
+                $scope.Lap = $scope.settings.data.Lap;
+
+            });
+
+        }else{
+            $scope.Lap = localStorage.getItem('Lap');
+        }
+
+        if (localStorage.getItem('delta') == null){
+
+            $http.get('js/settings.json').then(function(response) {
+                $scope.settings = JSON.parse(JSON.stringify(response.data));
+
+                $scope.delta = $scope.settings.data.delta;
+
+            });
+
+        }else{
+            $scope.delta = localStorage.getItem('delta');
+        }
+
+        $scope.LaptimeChange = function (Lap) {
+            localStorage.setItem('Lap', JSON.parse(JSON.stringify(Lap)));
+        };
+
+        $scope.DeltatimeChange = function (delta) {
+            localStorage.setItem('delta', JSON.parse(JSON.stringify(delta)));
+        };
+
+        $scope.ColorChange = function (color) {
+            localStorage.setItem('color', JSON.parse(JSON.stringify(color)));
+        };
+
+        $scope.opacity = [
+            {
+                name : '0%',
+                value : "rgba(0, 0, 0, 0)"
+            },
+            {
+                name : '20%',
+                value : "rgba(0, 0, 0, 0.2)"
+            },
+            {
+                name : '40%',
+                value : "rgba(0, 0, 0, 0.4)"
+            },
+            {
+                name : '60%',
+                value : "rgba(0, 0, 0, 0.6)"
+            },
+            {
+                name : '80%',
+                value : "rgba(0, 0, 0, 0.8)"
+            },
+            {
+                name : '100%',
+                value : "rgba(0, 0, 0, 1)"
+            },
+        ];
+
+        $scope.Laptime = [
+            {
+                name : 'Optimal Lap Time',
+                value : "optimal"
+            },
+            {
+                name : 'Best Lap Time',
+                value : "best"
+            },
+            {
+                name : 'Last Lap Time',
+                value : "last"
+            },
+        ];
+
+        $scope.Deltatime = [
+            {
+                name : 'Optimal Lap Time',
+                value : "optimal"
+            },
+            {
+                name : 'Best Lap Time',
+                value : "best"
+            },
+            {
+                name : 'Last Lap Time',
+                value : "last"
+            },
+        ];
 
         return $scope.ir = iRService.data;
     });
