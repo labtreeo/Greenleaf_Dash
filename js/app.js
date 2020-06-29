@@ -96,7 +96,7 @@
     //             LapOptimalLapTime: 199.546,
     //             SessionTimeRemain: 4355.435,
     //             OnPitRoad: false,
-    //             PlayerCarIdx: 32,
+    //             PlayerCarIdx: 15,
     //             dcTractionControl: 4,
     //         }
     //     };
@@ -109,52 +109,52 @@
         if (localStorage.getItem('color') == null){
 
             $http.get('js/settings.json').then(function(response) {
-                $scope.settings = JSON.parse(JSON.stringify(response.data));
+                $scope.settings = response.data;
 
-                $scope.color = $scope.settings.data.color;
+                $scope.color = $scope.settings.color;
 
             });
 
         }else{
-            $scope.color = localStorage.getItem('color');
+            $scope.color = JSON.parse(localStorage.getItem('color'));
         }
 
         if (localStorage.getItem('Lap') == null){
 
             $http.get('js/settings.json').then(function(response) {
-                $scope.settings = JSON.parse(JSON.stringify(response.data));
+                $scope.settings = response.data;
 
-                $scope.Lap = $scope.settings.data.Lap;
+                $scope.Lap = $scope.settings.Lap;
 
             });
 
         }else{
-            $scope.Lap = localStorage.getItem('Lap');
+            $scope.Lap = JSON.parse(localStorage.getItem('Lap'));
         }
 
-        if (localStorage.getItem('delta') == null){
+        if (localStorage.getItem('delta') ===null){
 
             $http.get('js/settings.json').then(function(response) {
-                $scope.settings = JSON.parse(JSON.stringify(response.data));
+                $scope.settings = response.data;
 
-                $scope.delta = $scope.settings.data.delta;
+                $scope.delta = $scope.settings.delta;
 
             });
 
         }else{
-            $scope.delta = localStorage.getItem('delta');
+            $scope.delta = JSON.parse(localStorage.getItem('delta'));
         }
 
         $scope.LaptimeChange = function (Lap) {
-            localStorage.setItem('Lap', JSON.parse(JSON.stringify(Lap)));
+            localStorage.setItem('Lap', Lap);
         };
 
         $scope.DeltatimeChange = function (delta) {
-            localStorage.setItem('delta', JSON.parse(JSON.stringify(delta)));
+            localStorage.setItem('delta', delta);
         };
 
         $scope.ColorChange = function (color) {
-            localStorage.setItem('color', JSON.parse(JSON.stringify(color)));
+            localStorage.setItem('color', color);
         };
 
         $scope.opacity = [

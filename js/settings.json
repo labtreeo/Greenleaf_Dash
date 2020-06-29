@@ -1,7 +1,6 @@
+
 {
-  "data": {
-    "color": "rgba(0, 0, 0, 0.4)",
-    "Lap": "last",
-    "delta": "best"
-  }
+  "color": "rgba(0, 0, 0, 0.4)",
+  "Lap": "last",
+  "delta": "best"
 }

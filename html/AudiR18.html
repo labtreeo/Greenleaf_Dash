@@ -1,12 +1,6 @@
-<div class="rechargeState">
+<div class="container mainhub" ng-style="{'background-color': color}" >
 
-    <div ng-if="ir.PowerMGU_K < 0" ng-style="{ 'width': mguCharging / 1000 / 3.5 + '%'}" style="position: absolute; background-color:#2dff1e; border-radius: 3px; color: transparent">-</div>
-
-</div>
-
-<div class="container mainhub" ng-style="{'background-color': color}"  data-toggle="modal" data-target="#exampleModal">
-
-    <div class="row row-cols-2" style="padding-top: 0.4rem;">
+    <div class="row row-cols-2" style="padding-top: 0.4rem;" data-toggle="modal" data-target="#exampleModal">
 
         <div class="col col-6 wrapBat">
             <div class="batteryState" ng-class="{charging: ir.PowerMGU_K < 0, discharging: ir.PowerMGU_K > 0}">
@@ -225,59 +219,61 @@
             </div>
         </div>
     </div>
+    <div class="blah">
 
-    <div class="row row-cols-5 bottomHub">
-        <div class="col">
-            <div class="row bb">
-                <span class="bottomHubText">BB</span>
+        <div class="row row-cols-5 bottomHub">
+            <div class="col">
+                <div class="row bb">
+                    <span class="bottomHubText">BB</span>
+                </div>
+
+                <div class="row bb" >
+                    <span class="bottomHubText" ng-bind="ir.dcBrakeBias | number:1 | percentage"></span>
+                </div>
+
             </div>
+            <div class="col">
+                <div class="row bb">
+                    <span class="bottomHubText">IBS</span>
+                </div>
 
-            <div class="row bb" >
-                <span class="bottomHubText" ng-bind="ir.dcBrakeBias | number:1 | percentage"></span>
+                <div class="row bb" >
+                    <span class="bottomHubText" ng-bind="ir.dcABS"></span>
+                </div>
+
             </div>
+            <div class="col">
+                <div class="row bb">
+                    <span class="bottomHubText">TC4</span>
+                </div>
 
-        </div>
-        <div class="col">
-            <div class="row bb">
-                <span class="bottomHubText">IBS</span>
+                <div class="row bb" >
+                    <span class="bottomHubText" ng-bind="ir.dcTractionControl3 | number:2"></span>
+                </div>
+
             </div>
+            <div class="col">
+                <div class="row bb">
+                    <span class="bottomHubText">MGU</span>
+                </div>
 
-            <div class="row bb" >
-                <span class="bottomHubText" ng-bind="ir.dcABS"></span>
+                <div class="row bb">
+                    <span class="bottomHubText" ng-bind="ir.dcMGUKDeployFixed"></span>
+                </div>
+
             </div>
+            <div class="col">
+                <div class="row bb">
+                    <span class="bottomHubText">INC</span>
+                </div>
 
-        </div>
-        <div class="col">
-            <div class="row bb">
-                <span class="bottomHubText">TC4</span>
-            </div>
+                <div class="row bb" ng-if="ir.WeekendInfo.WeekendOptions.IncidentLimit == 'unlimited'">
+                    <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount"></span>
+                </div>
 
-            <div class="row bb" >
-                <span class="bottomHubText" ng-bind="ir.dcTractionControl3 | number:2"></span>
-            </div>
-
-        </div>
-        <div class="col">
-            <div class="row bb">
-                <span class="bottomHubText">MGU</span>
-            </div>
-
-            <div class="row bb">
-                <span class="bottomHubText" ng-bind="ir.dcMGUKDeployFixed"></span>
-            </div>
-
-        </div>
-        <div class="col">
-            <div class="row bb">
-                <span class="bottomHubText">INC</span>
-            </div>
-
-            <div class="row bb" ng-if="ir.WeekendInfo.WeekendOptions.IncidentLimit == 'unlimited'">
-                <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount"></span>
-            </div>
-
-            <div class="row bb" ng-if="ir.WeekendInfo.WeekendOptions.IncidentLimit != 'unlimited'">
-                <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount + '/' + ir.WeekendInfo.WeekendOptions.IncidentLimit"></span>
+                <div class="row bb" ng-if="ir.WeekendInfo.WeekendOptions.IncidentLimit != 'unlimited'">
+                    <span class="bottomHubText" ng-bind="ir.PlayerCarTeamIncidentCount + '/' + ir.WeekendInfo.WeekendOptions.IncidentLimit"></span>
+                </div>
             </div>
         </div>
     </div>
