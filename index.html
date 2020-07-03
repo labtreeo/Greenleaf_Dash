@@ -59,9 +59,9 @@
 	</div>
 
 	<div ng-if="ir.IsOnTrack">
-		<div ng-include="'html/AudiR18.html'"></div>
-<!--		<div ng-if="ir.PlayerCarIdx === '33'" ng-include="'html/Porsche919.html'"></div>-->
-<!--		<div ng-if="ir.PlayerCarIdx != 32 && ir.PlayerCarIdx != 33 && ir.PlayerCarIdx != 0" ng-include="'html/Genericdash.html'"></div>-->
+		<div ng-if="ir.DriverInfo.Drivers[ir.DriverInfo.DriverCarIdx].CarPath === 'audir18'" ng-include="'html/AudiR18.html'"></div>
+		<div ng-if="ir.DriverInfo.Drivers[ir.DriverInfo.DriverCarIdx].CarPath === 'porsche919'"ng-include="'html/Porsche919.html'"></div>
+		<div ng-if="ir.DriverInfo.Drivers[ir.DriverInfo.DriverCarIdx].CarClassShortName != 'LMP1 Class'" ng-include="'html/Genericdash.html'"></div>
 	</div>
 
 </body>
